@@ -1,0 +1,56 @@
+// Place all the styles related to the Humen controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// .container{
+//     text-align:center;
+// }
+
+
+*{
+    font-weight:bold;
+    padding:0px;
+    margin:0px;
+    font-family:'sans-serif', sans-serif;
+    // background-image:url("jpg 1.0kb");
+    text-align:center;
+}
+
+h2{
+    text-align:center;
+    padding-top: 20px;
+}
+
+
+.form-group{
+    transition-duration: 0.3s;
+    padding:2px;
+}
+
+.table{
+    width:300px;
+}
+
+.center{
+    width:60%;
+    margin: 20px auto 20px auto;
+    padding:40px 40px 40px 40px;
+    line-height:10px;
+    // text-align:center;
+    background-color:#E0FFFF;
+    border-radius:10px;
+    
+}
+    
+
+// .nav-item p{
+//     font-size:20px;
+// }
+
+.nav-item{
+    font-size:17px;
+}
+
+Navbar li{
+    color:red;
+}

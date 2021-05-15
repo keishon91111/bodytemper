@@ -1,0 +1,85 @@
+<div class="container">
+    <div class="sticky-top header">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="https://7efe9a1d90d34dc89c9e319e36ca0a12.vfs.cloud9.us-east-2.amazonaws.com/humen/new">初めての方はこちら</a>
+  
+  <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">-->
+  <!--  <span class="navbar-toggler-icon"></span>-->
+  <!--</button>-->
+  
+  <div class="collapse navbar-collapse" id="">
+    <div class="navbar-nav">
+
+      <a class="nav-item nav-link" href="#">
+      <i class="fas fa-book-open fa-lg"></i>
+      利用方法
+      </a>
+      
+      <a class="nav-item nav-link" href="/bodytemperatures">
+      <i class="fas fa-user-check fa-lg"></i>
+      提出状況
+      </a>
+      
+      <a class="nav-item nav-link" href="/humen/">
+      <i class="fas fa-users fa-lg"></i>
+      登録社員一覧
+      </a>
+     
+      <a class="nav-item nav-link" href="https://7efe9a1d90d34dc89c9e319e36ca0a12.vfs.cloud9.us-east-2.amazonaws.com/bodytemperatures/new">
+      <i class="fas fa-thermometer fa-lg"></i>
+      体温を登録
+      </a> 
+      
+      <a class="nav-link" href="/users/sign_out", method: :delete>
+      <i class="fas fa-users-slash"></i>
+      ログアウト
+      </a>
+      </div>
+    </div>
+  </div>
+</nav>
+<h2>体温登録画面</h2>
+    
+       <% flash.each do |key, value| %>
+  <p class="alert alert-<%= key %>">
+    <%= value %>
+  </p>
+<% end %>
+
+<p>体温と社員番号、健康状態を入力してください</p>
+<div class ="center" name="Form-temperature">
+<%= form_with model: @bodytemperature do |form| %>
+   <div class="form-group">
+        <%= form.label "form-bodytemperature.human_id", "登録した社員番号" %>
+        <%= form.number_field :human_id, id:"form-bodytemperature.human_id",class:"form-control",placeholder: "社員番号" %>
+   </div>
+    
+    
+   <div class="form-group">
+        <%= form.label "form-temper", "本日計測した体温" %>
+        <%= form.number_field :temper, id:"form-temper",class:"form-control" ,value:36.0,min:34.0,max:42.0,step:0.1,placeholder: "体温" %>
+   </div>
+   
+   
+   
+  <div class = "radio">
+        <%= form.label "form-health", "・体調の状態を選択してください" %>
+       <div class="custom-control">
+           
+        <%= form.radio_button :item, 0, {checked: true,onclick:"checkradio('none');"}  %> 体調に問題はない
+        
+        <%= form.radio_button :item, 1, {onClick:"checkradio('inline');"} %> 少し気分がすぐれない
+       </div>
+       
+       <!--<div class = "form-group select">-->
+          <div id = "reason">
+          <%= form.label "form-reason", "・具体的に症状を記入してください" %>  
+          <%= form.text_field :reason, id:"form-reason", class:"form-control",placeholder:"例:くしゃみや鼻水がでる,頭が痛いなど"%>
+          </div>
+       <!--</div>-->
+   </div>
+        <%= form.submit "登録する",class:"btn btn-primary"%>
+  </div>
+</div>
+<% end %>
+</div>
