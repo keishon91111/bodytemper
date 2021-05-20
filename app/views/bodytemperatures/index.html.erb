@@ -1,86 +1,84 @@
-<div class ="container">
-      <h3>List</h3>
-  <% @bodytemperature.each do |bodytemperature| %>
-    <div class= "col-md-4">
-      <div class="panel panel-warning">
-        <div class="panel-heading">
-          <h4><%= bodytemperature.human.name%></h4>
-          
-          <p>入力した日付は：<%= bodytemperature.day %></p>
-          <p>入力した体温は<%= bodytemperature.temper %></p>
+<!--<div class = "container">-->
+<!--<div class="d-flex justify-content-end">-->
+  <div class="sticky-top">
+   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="https://7efe9a1d90d34dc89c9e319e36ca0a12.vfs.cloud9.us-east-2.amazonaws.com/humen/new">初めての方はこちら</a>
+    
+    <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">-->
+    <!--  <span class="navbar-toggler-icon"></span>-->
+    <!--</button>-->
+    
+    <div class="collapse navbar-collapse d-flex justify-content-end">
+      <div class="navbar-nav">
+  
+        <a class="nav-item nav-link" href="#">
+        <i class="fas fa-book-open fa-lg"></i>
+        利用方法
+        </a>
+        
+        <a class="nav-item nav-link" href="https://7efe9a1d90d34dc89c9e319e36ca0a12.vfs.cloud9.us-east-2.amazonaws.com/bodytemperatures/">
+        <i class="fas fa-user-check fa-lg"></i>
+        提出状況
+        </a>
+        
+        <a class="nav-item nav-link" href="https://7efe9a1d90d34dc89c9e319e36ca0a12.vfs.cloud9.us-east-2.amazonaws.com/humen/">
+        <i class="fas fa-users fa-lg"></i>
+        登録社員一覧
+        </a>
+       
+        <a class="nav-item nav-link" href="https://7efe9a1d90d34dc89c9e319e36ca0a12.vfs.cloud9.us-east-2.amazonaws.com/bodytemperatures/new">
+        <i class="fas fa-thermometer fa-lg"></i>
+        体温を登録
+        </a> 
+        
+        <a class="nav-link" href="/users/sign_out", method: :delete>
+        <i class="fas fa-users-slash"></i>
+        ログアウト
+        </a>
+           </nav>
         </div>
-    </div>
-  </div>
-</div>
-<% end %>
-
-<div class = "container">
-<div class="sticky-top">
- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="https://7efe9a1d90d34dc89c9e319e36ca0a12.vfs.cloud9.us-east-2.amazonaws.com/humen/new">初めての方はこちら</a>
-  
-  <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">-->
-  <!--  <span class="navbar-toggler-icon"></span>-->
-  <!--</button>-->
-  
-  <div class="collapse navbar-collapse" id="">
-    <div class="navbar-nav">
-
-      <a class="nav-item nav-link" href="#">
-      <i class="fas fa-book-open fa-lg"></i>
-      利用方法
-      </a>
-      
-      <a class="nav-item nav-link" href="#">
-      <i class="fas fa-user-check fa-lg"></i>
-      提出状況
-      </a>
-      
-      <a class="nav-item nav-link" href="/humen/">
-      <i class="fas fa-users fa-lg"></i>
-      登録社員一覧
-      </a>
-     
-      <a class="nav-item nav-link" href="https://7efe9a1d90d34dc89c9e319e36ca0a12.vfs.cloud9.us-east-2.amazonaws.com/bodytemperatures/new">
-      <i class="fas fa-thermometer fa-lg"></i>
-      体温を登録
-      </a> 
-      
-      <a class="nav-link" href="/users/sign_out", method: :delete>
-      <i class="fas fa-users-slash"></i>
-      ログアウト
-      </a>
       </div>
     </div>
-  </div>
-</nav>
-    
-</div>
+<!--</div>-->
 
-
-
-  <h2><%= bodytemperature.day %>の提出状況</h2>
-
-     <% flash.each do |name, msg| %>
-  <div class="alert alert-</div><%= name %>">
-    <%= msg %>
-  </div>
+ <!--<div class = "container">-->
+  <% flash.each do |key, value| %>
+  <p class="alert alert-<%= key %>">
+    <%= value %>
+  </p>
 <% end %>
 
+<h3 id="view_today"></h3>
 
+<script type="text/javascript">
+document.getElementById("view_today").innerHTML = getToday();
+
+function getToday() {
+	var now = new Date();
+	var mon = now.getMonth()+1; //１を足すこと
+	var day = now.getDate();
+	var you = now.getDay(); //曜日(0～6=日～土)
+
+	//曜日の選択肢
+	var youbi = new Array("日","月","火","水","木","金","土");
+	//出力用
+	var s =   mon + "月" + day + "日(" + youbi[you] + ")の提出状況";
+	return s;
+}
+</script>
 
     
     <table class="table table-bordered table-primary">
   <thead>
     <tr>
       <th scope="col">社員名</th>
-      <th scope="col">体調</th>
+      <th scope="col">体調の状態</th>
       <th scope="col">体温</th>
       <th scope="col">削除</th>
       <th scope="col">編集</th>
     </tr>
   </thead>
-  
+</div>
   
    <tbody>
     <tr>
@@ -93,7 +91,6 @@
          <%= link_to bodytemperature, method: :delete, data: { confirm: "本当に削除しますか？" }  do %>
          <i class="fas fa-trash-alt"></i> 
          <% end %>
-            <!--<a data-confirm="本当に削除しますか？" rel="nofollow", title: "削除確認"  href ="/humen/<%= human.id %>" data-method="delete"><i class="fas fa-trash-alt"></i></a>-->
          </div> 
       </td>
       <td>
@@ -105,7 +102,7 @@
 　<% end %>
    </tbody> 
  </table>
-</div>
+<!--</div>-->
 
 
 

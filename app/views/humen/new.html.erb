@@ -1,42 +1,43 @@
-<div class="container" >
+<!--<div class = "container">-->
 <div class="sticky-top">
-  <header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+ <nav class="navbar navbar-expand-lg navbar-light bg-#FFFFFF">
+     <!--色を戻すときはこれを書くnavbar-light-->
   <a class="navbar-brand" href="https://7efe9a1d90d34dc89c9e319e36ca0a12.vfs.cloud9.us-east-2.amazonaws.com/humen/new">初めての方はこちら</a>
-  <div class="collapse navbar-collapse" id="Navbar">
+  
+ <div class="collapse navbar-collapse d-flex justify-content-end">
     <div class="navbar-nav">
 
       <a class="nav-item nav-link" href="#">
-      <li class="fas fa-book-open fa-lg"></li>
+      <i class="fas fa-book-open fa-lg"></i>
       利用方法
       </a>
       
-      <a class="nav-item nav-link" href="#">
-      <li class="fas fa-user-check fa-lg"></li>
+      <a class="nav-item nav-link" href="https://7efe9a1d90d34dc89c9e319e36ca0a12.vfs.cloud9.us-east-2.amazonaws.com/bodytemperatures/">
+      <i class="fas fa-user-check fa-lg"></i>
       提出状況
       </a>
       
       <a class="nav-item nav-link" href="/humen/">
-      <li class="fas fa-users fa-lg"></li>
+      <i class="fas fa-users fa-lg"></i>
       登録社員一覧
       </a>
      
       <a class="nav-item nav-link" href="https://7efe9a1d90d34dc89c9e319e36ca0a12.vfs.cloud9.us-east-2.amazonaws.com/bodytemperatures/new">
-      <li class="fas fa-thermometer fa-lg"></li>
+      <i class="fas fa-thermometer fa-lg"></i>
       体温を登録
       </a> 
       
       <a class="nav-link" href="/users/sign_out", method: :delete>
-      <li class="fas fa-users-slash"></li>
+      <i class="fas fa-users-slash"></i>
       ログアウト
       </a>
       </div>
     </div>
-    </header>
-  </div>
-</nav>
+    </nav>
+  </div>    
 
-
+<!--</div>-->
+<div class = "middle">
 <h2>社員番号登録画面</h2>
 <p>初めに社員番号を登録してください</p>
 
@@ -46,7 +47,6 @@
   </p>
 <% end %>
 
-<body>
 <%= form_with model: @human do |form| %>
 <div class = "center">
    <div class="form-group">
@@ -58,9 +58,8 @@
         <%= form.label "form-number", "社員番号を入力してください" %>
         <%= form.number_field :number, id:"form-number",class:"form-control",placeholder: "社員番号" %>
    </div>
-    <%= form.submit "登録する",class:"btn btn-primary"%>
+    <%= form.submit "登録する",class:"btn btn-info"%>
 <% end %>
  </div>
- </body>
 </div>
 

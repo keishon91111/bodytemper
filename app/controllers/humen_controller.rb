@@ -43,7 +43,7 @@ protect_from_forgery
         @human.number = params[:human][:number]
         @human.save
         if @human.save
-        redirect_to humen_path, notice: '編集が完了しました'
+        redirect_to humen_path, success: '編集が完了しました'
         else
         flash[:danger] = '編集に失敗しました。入力した値を修正してください。'
         end

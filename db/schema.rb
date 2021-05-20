@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_11_051025) do
+ActiveRecord::Schema.define(version: 2021_05_18_134656) do
 
   create_table "bodytemperatures", force: :cascade do |t|
-    t.date "day"
     t.float "temper"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "human_id"
     t.string "reason"
     t.string "item"
+    t.date "day"
     t.index ["human_id"], name: "index_bodytemperatures_on_human_id"
   end
 

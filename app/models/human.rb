@@ -1,5 +1,5 @@
 class Human < ApplicationRecord
-has_many :bodytemperatures
+has_many :bodytemperatures, dependent: :destroy
 # , dependent: :destroy, dependent: :edit
 validates :name, presence: true
 validates :number, presence: true

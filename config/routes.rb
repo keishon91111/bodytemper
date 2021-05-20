@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources  :bodytemperatures
     resources  :humen
     resources  :homes
-  get"/bodytemperatures/alert", to:"bodytemperatures#alert"
+  # get"/bodytemperatures/alert", to:"bodytemperatures#alert"
   
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'

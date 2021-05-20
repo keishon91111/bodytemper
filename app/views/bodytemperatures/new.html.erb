@@ -1,13 +1,8 @@
-<div class="container">
-    <div class="sticky-top header">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<div class="sticky-top">
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="https://7efe9a1d90d34dc89c9e319e36ca0a12.vfs.cloud9.us-east-2.amazonaws.com/humen/new">初めての方はこちら</a>
   
-  <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">-->
-  <!--  <span class="navbar-toggler-icon"></span>-->
-  <!--</button>-->
-  
-  <div class="collapse navbar-collapse" id="">
+ <div class="collapse navbar-collapse d-flex justify-content-end">
     <div class="navbar-nav">
 
       <a class="nav-item nav-link" href="#">
@@ -15,7 +10,7 @@
       利用方法
       </a>
       
-      <a class="nav-item nav-link" href="/bodytemperatures">
+      <a class="nav-item nav-link" href="https://7efe9a1d90d34dc89c9e319e36ca0a12.vfs.cloud9.us-east-2.amazonaws.com/bodytemperatures/">
       <i class="fas fa-user-check fa-lg"></i>
       提出状況
       </a>
@@ -38,6 +33,7 @@
     </div>
   </div>
 </nav>
+
 <h2>体温登録画面</h2>
     
        <% flash.each do |key, value| %>
@@ -66,20 +62,19 @@
         <%= form.label "form-health", "・体調の状態を選択してください" %>
        <div class="custom-control">
            
-        <%= form.radio_button :item, 0, {checked: true,onclick:"checkradio('none');"}  %> 体調に問題はない
+        <%= form.radio_button :item, "体調に問題はない", {checked: true,onclick:"checkradio('none');"}  %> 体調に問題はない
         
-        <%= form.radio_button :item, 1, {onClick:"checkradio('inline');"} %> 少し気分がすぐれない
+        <%= form.radio_button :item, "少し気分がすぐれない", {onClick:"checkradio('inline');"} %> 少し気分がすぐれない
        </div>
        
-       <!--<div class = "form-group select">-->
+       <div class = "form-group select">
           <div id = "reason">
           <%= form.label "form-reason", "・具体的に症状を記入してください" %>  
           <%= form.text_field :reason, id:"form-reason", class:"form-control",placeholder:"例:くしゃみや鼻水がでる,頭が痛いなど"%>
           </div>
-       <!--</div>-->
+       </div>
    </div>
         <%= form.submit "登録する",class:"btn btn-primary"%>
   </div>
 </div>
 <% end %>
-</div>

@@ -12,9 +12,22 @@
     padding:0px;
     margin:0px;
     font-family:'sans-serif', sans-serif;
-    // background-image:url("jpg 1.0kb");
-    text-align:center;
+    // background-color:blue;
+    // text-align:center;
 }
+
+// ;
+
+.navbar-nav i{
+    color:#3399FF;
+    
+}
+
+// .navbar {
+//     color::#3399FF;
+// }
+
+
 
 h2{
     text-align:center;
@@ -27,8 +40,14 @@ h2{
     padding:2px;
 }
 
+.middle{
+    background-color:#F5F5F5;
+}
+
+
 .table{
     width:300px;
+    text-align:center;
 }
 
 .center{
@@ -42,6 +61,7 @@ h2{
     
 }
     
+    
 
 // .nav-item p{
 //     font-size:20px;
@@ -51,6 +71,3 @@ h2{
     font-size:17px;
 }
 
-Navbar li{
-    color:red;
-}
