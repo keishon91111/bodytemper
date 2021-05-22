@@ -1,8 +1,11 @@
 class BodytemperaturesController < ApplicationController
    def index
-    @bodytemperatures = Bodytemperature.where("day", Date.today)
+    @bodytemperatures = Bodytemperature.where(day:Date.today).order(reason: "DESC")
     # @bodytemperatures = Bodytemperature.all
    end
+   
+   
+   
     
    def new
     @bodytemperature = Bodytemperature.new
@@ -10,18 +13,19 @@ class BodytemperaturesController < ApplicationController
    
    def create
      require"date"
-     @bodytemperature = Bodytemperature.create(bodytemperatures_params)
+    
+     @human =  Human.find_by(number: params[:bodytemperature][:number])
+     @bodytemperature = @human.bodytemperatures.new(bodytemperatures_params)
      @bodytemperature.day = Date.today
-     @bodytemperature.human_id = Human.find_by(number:params[:human_id])
-     # binding.pry
-     @bodytemperature.save
      if @bodytemperature.save
      redirect_to new_bodytemperature_path, success:"体温の登録が完了しました。"
      else
-     # redirect_to new_bodytemperature_path, alart:"登録できませんでした。入力した値を修正してください。"
      redirect_to new_bodytemperature_path, danger:"登録できませんでした。登録した値を修正してください."
      end
    end
+   
+   
+   
    
    def destroy
      @bodytemperature = Bodytemperature.find(params[:id])
@@ -53,7 +57,7 @@ class BodytemperaturesController < ApplicationController
    
 private
     def bodytemperatures_params
-        params.require(:bodytemperature).permit(:temper,:human_id,:item,:reason)
+        params.require(:bodytemperature).permit(:temper,:item,:reason)
     end
    
 end

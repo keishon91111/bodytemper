@@ -81,8 +81,8 @@ function getToday() {
 </div>
   
    <tbody>
-    <tr>
-      <% @bodytemperatures.each do |bodytemperature| %>
+    <% @bodytemperatures.each do |bodytemperature| %>
+    <tr class="<%= "red" if bodytemperature.temper >= 37.0  %>">
       <td><%= bodytemperature.human.name%></td>
       <td><%= bodytemperature.reason %></td>
       <td><%= bodytemperature.temper %></td>

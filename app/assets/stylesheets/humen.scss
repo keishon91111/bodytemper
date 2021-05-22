@@ -13,7 +13,7 @@
     margin:0px;
     font-family:'sans-serif', sans-serif;
     // background-color:blue;
-    // text-align:center;
+    text-align:center;
 }
 
 // ;
@@ -29,9 +29,15 @@
 
 
 
-h2{
+h3{
+    padding-top:30px;
+    // padding-bottom: 20px;
+}
+
+h5{
     text-align:center;
-    padding-top: 20px;
+    padding-bottom:20px;
+    font-weight:900;
 }
 
 
@@ -40,19 +46,14 @@ h2{
     padding:2px;
 }
 
-.middle{
-    background-color:#F5F5F5;
-}
-
 
 .table{
     width:300px;
-    text-align:center;
 }
 
 .center{
-    width:60%;
-    margin: 20px auto 20px auto;
+    width:40%;
+    margin: 40px auto 0px auto;
     padding:40px 40px 40px 40px;
     line-height:10px;
     // text-align:center;
@@ -71,3 +72,7 @@ h2{
     font-size:17px;
 }
 
+
+.red{
+    background-color:red;
+}

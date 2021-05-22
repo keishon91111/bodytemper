@@ -1,6 +1,6 @@
 <!--<div class = "container">-->
 <div class="sticky-top">
- <nav class="navbar navbar-expand-lg navbar-light bg-#FFFFFF">
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
      <!--色を戻すときはこれを書くnavbar-light-->
   <a class="navbar-brand" href="https://7efe9a1d90d34dc89c9e319e36ca0a12.vfs.cloud9.us-east-2.amazonaws.com/humen/new">初めての方はこちら</a>
   
@@ -37,9 +37,6 @@
   </div>    
 
 <!--</div>-->
-<div class = "middle">
-<h2>社員番号登録画面</h2>
-<p>初めに社員番号を登録してください</p>
 
 <% flash.each do |key, value| %>
   <p class="alert alert-<%= key %>">
@@ -50,6 +47,9 @@
 <%= form_with model: @human do |form| %>
 <div class = "center">
    <div class="form-group">
+        <h2>社員番号登録画面</h2>
+        <hr></hr>
+        <h5>初めに社員番号を登録してください</h5>
         <%= form.label "form-name", "名前を入力してください" %>
         <%= form.text_field :name, id:"form-name",class:"form-control",placeholder: "名前" %>
    </div>
@@ -58,8 +58,8 @@
         <%= form.label "form-number", "社員番号を入力してください" %>
         <%= form.number_field :number, id:"form-number",class:"form-control",placeholder: "社員番号" %>
    </div>
-    <%= form.submit "登録する",class:"btn btn-info"%>
+    <%= form.submit "登録する",class:"btn btn-info w-100"%>
 <% end %>
  </div>
-</div>
+
 

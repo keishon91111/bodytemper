@@ -34,7 +34,8 @@
   </div>
 </nav>
 
-<h2>体温登録画面</h2>
+<!--<h2>体温登録画面</h2>-->
+<!--<hr></hr>-->
     
        <% flash.each do |key, value| %>
   <p class="alert alert-<%= key %>">
@@ -42,12 +43,16 @@
   </p>
 <% end %>
 
-<p>体温と社員番号、健康状態を入力してください</p>
+
 <div class ="center" name="Form-temperature">
+
 <%= form_with model: @bodytemperature do |form| %>
+ <h2>体温登録画面</h2>
+    <hr></hr>
+    <h5>社員番号と体温、健康状態を入力してください</h5>
    <div class="form-group">
-        <%= form.label "form-bodytemperature.human_id", "登録した社員番号" %>
-        <%= form.number_field :human_id, id:"form-bodytemperature.human_id",class:"form-control",placeholder: "社員番号" %>
+        <%= form.label "form-bodytemperature.number", "登録した社員番号" %>
+        <%= form.number_field :number, id:"form-bodytemperature.number",class:"form-control",placeholder: "社員番号" %>
    </div>
     
     
@@ -74,7 +79,7 @@
           </div>
        </div>
    </div>
-        <%= form.submit "登録する",class:"btn btn-primary"%>
+        <%= form.submit "登録する",class:"btn btn-info w-100"%>
   </div>
 </div>
 <% end %>

@@ -11,7 +11,7 @@ protect_from_forgery
         @human = Human.create(humen_params)
         @human.save
         if @human.save
-        redirect_to new_bodytemperature_path, success: '社員番号の登録が完了しました。'
+        redirect_to new_bodytemperature_path, success: '社員番号を登録しました.次に体温の登録をしてください'
         else
         redirect_to new_human_path, danger: '登録できませんでした。入力した値を修正してください'
         # flash[:danger] = '番号の登録に失敗しました。'
