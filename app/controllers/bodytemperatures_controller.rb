@@ -14,9 +14,10 @@ class BodytemperaturesController < ApplicationController
    def create
      require"date"
     
-     @human =  Human.find_by(number: params[:bodytemperature][:number])
-     @bodytemperature = @human.bodytemperatures.new(bodytemperatures_params)
+     @employee =  Employee.find_by(number: params[:bodytemperature][:number])
+     @bodytemperature = @employee.bodytemperatures.new(bodytemperatures_params)
      @bodytemperature.day = Date.today
+     @bodytemperature.save
      if @bodytemperature.save
      redirect_to new_bodytemperature_path, success:"体温の登録が完了しました。"
      else
@@ -41,7 +42,7 @@ class BodytemperaturesController < ApplicationController
 
     def update
      @bodytemperature = Bodytemperature.find(params[:id])
-     @bodytemperature.human.number = params[:bodytemperature][:human_id]
+     @bodytemperature.employee.number = params[:bodytemperature][:employee_id]
      @bodytemperature.temper = params[:bodytemperature][:temper]
      @bodytemperature.save
      if @bodytemperature.save

@@ -2,7 +2,7 @@
 <div class="sticky-top">
   <header>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="https://7efe9a1d90d34dc89c9e319e36ca0a12.vfs.cloud9.us-east-2.amazonaws.com/humen/new">初めての方はこちら</a>
+  <a class="navbar-brand" href="https://7efe9a1d90d34dc89c9e319e36ca0a12.vfs.cloud9.us-east-2.amazonaws.com/employees/new">初めての方はこちら</a>
   <div class="collapse navbar-collapse" id="Navbar">
     <div class="navbar-nav">
 
@@ -16,7 +16,7 @@
       提出状況
       </a>
       
-      <a class="nav-item nav-link" href="/humen/">
+      <a class="nav-item nav-link" href="/employees/">
       <li class="fas fa-users fa-lg"></li>
       登録社員一覧
       </a>
@@ -47,7 +47,7 @@
 <% end %>
 
 <body>
-<%= form_with model: @human do |form| %>
+<%= form_with model: @employee do |form| %>
 <div class = "center">
    <div class="form-group">
         <%= form.label "form-name", "名前を入力してください" %>

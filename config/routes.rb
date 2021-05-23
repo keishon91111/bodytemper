@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # root 'comments#index'
   root "homes#index"
     resources  :bodytemperatures
-    resources  :humen
+    resources  :employees
     resources  :homes
   # get"/bodytemperatures/alert", to:"bodytemperatures#alert"
   

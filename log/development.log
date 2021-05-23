@@ -52879,3 +52879,963 @@ Processing by HumenController#new as HTML
 Completed 200 OK in 97ms (Views: 94.2ms | ActiveRecord: 0.0ms)
 
 
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to ChangeHumenToEmployees (20210523031401)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210523031401"]]
+  ↳ bin/rails:9
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to RemoveHumanIdFromBodytemperatures (20210523054951)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20210523054951_remove_human_id_from_bodytemperatures.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "abodytemperatures" ("id" integer NOT NULL PRIMARY KEY, "temper" float DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "human_id" integer DEFAULT NULL, "reason" varchar DEFAULT NULL, "item" varchar DEFAULT NULL, "day" date DEFAULT NULL)[0m
+  ↳ db/migrate/20210523054951_remove_human_id_from_bodytemperatures.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_abodytemperatures_on_human_id" ON "abodytemperatures" ("human_id")[0m
+  ↳ db/migrate/20210523054951_remove_human_id_from_bodytemperatures.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "abodytemperatures" ("id","temper","created_at","updated_at","human_id","reason","item","day")
+                     SELECT "id","temper","created_at","updated_at","human_id","reason","item","day" FROM "bodytemperatures"[0m
+  ↳ db/migrate/20210523054951_remove_human_id_from_bodytemperatures.rb:3
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE "bodytemperatures"[0m
+  ↳ db/migrate/20210523054951_remove_human_id_from_bodytemperatures.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "bodytemperatures" ("id" integer NOT NULL PRIMARY KEY, "temper" float DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "reason" varchar DEFAULT NULL, "item" varchar DEFAULT NULL, "day" date DEFAULT NULL)[0m
+  ↳ db/migrate/20210523054951_remove_human_id_from_bodytemperatures.rb:3
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "bodytemperatures" ("id","temper","created_at","updated_at","reason","item","day")
+                     SELECT "id","temper","created_at","updated_at","reason","item","day" FROM "abodytemperatures"[0m
+  ↳ db/migrate/20210523054951_remove_human_id_from_bodytemperatures.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "abodytemperatures"[0m
+  ↳ db/migrate/20210523054951_remove_human_id_from_bodytemperatures.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210523054951"]]
+  ↳ bin/rails:9
+  [1m[35m (6.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to AddEmployeeIdToBodytemperatures (20210523055243)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "posts" ADD "employee_id" integer[0m
+  ↳ db/migrate/20210523055243_add_employee_id_to_bodytemperatures.rb:3
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to AddEmployeeIdToBodytemperatures (20210523055243)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "bodytemperatures" ADD "employee_id" integer[0m
+  ↳ db/migrate/20210523055243_add_employee_id_to_bodytemperatures.rb:3
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20210523055243_add_employee_id_to_bodytemperatures.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_bodytemperatures_on_employee_id" ON "bodytemperatures" ("employee_id")[0m
+  ↳ db/migrate/20210523055243_add_employee_id_to_bodytemperatures.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210523055243"]]
+  ↳ bin/rails:9
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mEmployee Load (0.5ms)[0m  [1m[34mSELECT "employees".* FROM "employees"[0m
+  [1m[36mEmployee Load (0.4ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mEmployee Load (0.5ms)[0m  [1m[34mSELECT "employees".* FROM "employees"[0m
+  [1m[36mEmployee Load (0.4ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mBodytemperature Load (0.9ms)[0m  [1m[34mSELECT "bodytemperatures".* FROM "bodytemperatures"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mEmployee Load (0.5ms)[0m  [1m[34mSELECT "employees".* FROM "employees"[0m
+  [1m[36mEmployee Load (0.5ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/" for 103.5.142.122 at 2021-05-23 06:53:26 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by HomesController#index as HTML
+Redirected to https://7efe9a1d90d34dc89c9e319e36ca0a12.vfs.cloud9.us-east-2.amazonaws.com/users/sign_in
+Completed 302 Found in 12ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 103.5.142.122 at 2021-05-23 06:53:27 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by Users::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (23.9ms)
+Started GET "/" for 103.5.142.122 at 2021-05-23 06:53:30 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by HomesController#index as HTML
+Redirected to https://7efe9a1d90d34dc89c9e319e36ca0a12.vfs.cloud9.us-east-2.amazonaws.com/users/sign_in
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 103.5.142.122 at 2021-05-23 06:53:30 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by Users::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 12250ms (Views: 12240.0ms | ActiveRecord: 0.6ms)
+
+
+Completed 200 OK in 9738ms (Views: 9737.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 103.5.142.122 at 2021-05-23 06:53:46 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UunZs4Upm568KJQ4VsHN+ZPMxZ9nSj+jrxTQzXdIys0et+8htlk/KZfneD4i+ecwG1isDFP3BE1rs1mor3QUow==", "user"=>{"name"=>"会社", "email"=>"fsaaa9111@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"ログイン"}
+  [1m[36mUser Load (6.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "fsaaa9111@gmail.com"], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Redirected to https://7efe9a1d90d34dc89c9e319e36ca0a12.vfs.cloud9.us-east-2.amazonaws.com/bodytemperatures/new
+Completed 302 Found in 336ms (ActiveRecord: 6.7ms)
+
+
+Started GET "/bodytemperatures/new" for 103.5.142.122 at 2021-05-23 06:53:46 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by BodytemperaturesController#new as HTML
+  Rendering bodytemperatures/new.html.erb within layouts/application
+  Rendered bodytemperatures/new.html.erb within layouts/application (130.6ms)
+Completed 200 OK in 232ms (Views: 215.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/humen/" for 103.5.142.122 at 2021-05-23 06:53:54 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (uninitialized constant HumenController):
+  
+activesupport (5.2.6) lib/active_support/inflector/methods.rb:283:in `const_get'
+activesupport (5.2.6) lib/active_support/inflector/methods.rb:283:in `block in constantize'
+activesupport (5.2.6) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.6) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.6) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.6) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.6) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.6) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.6) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.6) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.6) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.6) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.6) lib/action_dispatch/routing/route_set.rb:840:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+actionpack (5.2.6) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.3) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/cookies.rb:670:in `call'
+activerecord (5.2.6) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.6) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.6) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.6) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/bodytemperatures/new" for 103.5.142.122 at 2021-05-23 06:54:21 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by BodytemperaturesController#new as HTML
+  Rendering bodytemperatures/new.html.erb within layouts/application
+  Rendered bodytemperatures/new.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 88ms (Views: 87.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/bodytemperatures/" for 103.5.142.122 at 2021-05-23 06:54:26 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by BodytemperaturesController#index as HTML
+  Rendering bodytemperatures/index.html.erb within layouts/application
+  [1m[36mBodytemperature Load (0.2ms)[0m  [1m[34mSELECT "bodytemperatures".* FROM "bodytemperatures" WHERE "bodytemperatures"."day" = ? ORDER BY "bodytemperatures"."reason" DESC[0m  [["day", "2021-05-23"]]
+  ↳ app/views/bodytemperatures/index.html.erb:84
+  Rendered bodytemperatures/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 91ms (Views: 86.8ms | ActiveRecord: 0.2ms)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/bin/rake:23
+Migrating to Hoge (20210523031401)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to Hoge (20210523031401)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to Hoge (20210523031401)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/bin/rake:23
+Migrating to Hoge (20210523031401)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to Hoge (20210523031401)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to AddEmployeeIdToBodytemperatures (20210523055243)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "abodytemperatures" ("id" integer NOT NULL PRIMARY KEY, "temper" float DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "reason" varchar DEFAULT NULL, "item" varchar DEFAULT NULL, "day" date DEFAULT NULL, "employee_id" integer DEFAULT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_abodytemperatures_on_employee_id" ON "abodytemperatures" ("employee_id")[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "abodytemperatures" ("id","temper","created_at","updated_at","reason","item","day","employee_id")
+                     SELECT "id","temper","created_at","updated_at","reason","item","day","employee_id" FROM "bodytemperatures"[0m
+  ↳ bin/rails:9
+  [1m[35m (2.0ms)[0m  [1m[35mDROP TABLE "bodytemperatures"[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "bodytemperatures" ("id" integer NOT NULL PRIMARY KEY, "temper" float DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "reason" varchar DEFAULT NULL, "item" varchar DEFAULT NULL, "day" date DEFAULT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "bodytemperatures" ("id","temper","created_at","updated_at","reason","item","day")
+                     SELECT "id","temper","created_at","updated_at","reason","item","day" FROM "abodytemperatures"[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "abodytemperatures"[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.1ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20210523055243"]]
+  ↳ bin/rails:9
+  [1m[35m (4.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to AddEmployeeIdToBodytemperatures (20210523055243)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (1.4ms)[0m  [1m[35mALTER TABLE "bodytemperatures" ADD "employee_id" integer[0m
+  ↳ db/migrate/20210523055243_add_employee_id_to_bodytemperatures.rb:3
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20210523055243_add_employee_id_to_bodytemperatures.rb:3
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_bodytemperatures_on_employee_id" ON "bodytemperatures" ("employee_id")[0m
+  ↳ db/migrate/20210523055243_add_employee_id_to_bodytemperatures.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210523055243"]]
+  ↳ bin/rails:9
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/bin/rake:23
+Migrating to Hoge (20210523031401)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[36mActiveRecord::SchemaMigration Destroy (1.4ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20210523031401"]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (6.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to RenameHumanToEmployee (20210523072042)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "human" RENAME TO "employees"[0m
+  ↳ db/migrate/20210523072042_rename_human_to_employee.rb:3
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to RenameHumentoEmployees (20210523072516)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "humen" RENAME TO "employees"[0m
+  ↳ db/migrate/20210523072516_rename_humento_employees.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210523072516"]]
+  ↳ bin/rails:9
+  [1m[35m (6.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/bodytemperatures/new" for 103.5.142.122 at 2021-05-23 07:27:13 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by BodytemperaturesController#new as HTML
+  Rendering bodytemperatures/new.html.erb within layouts/application
+  Rendered bodytemperatures/new.html.erb within layouts/application (101.9ms)
+Completed 200 OK in 811ms (Views: 790.1ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/bodytemperatures" for 103.5.142.122 at 2021-05-23 07:27:21 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by BodytemperaturesController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"wL49dBaqfSAnxzeBNl3tbXI3WGvzqLhnKOu6GLv9A4QAGFs0NKXgR/Ovn048LYfGcaKLgVZVZgMbAjpmUEEuhw==", "bodytemperature"=>{"number"=>"12241", "temper"=>"36.0", "item"=>"体調に問題はない", "reason"=>""}, "commit"=>"登録する"}
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."number" = ? LIMIT ?[0m  [["number", 12241], ["LIMIT", 1]]
+  ↳ app/controllers/bodytemperatures_controller.rb:17
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.4ms)
+
+
+  
+NoMethodError (undefined method `bodytemperatures' for nil:NilClass):
+  
+app/controllers/bodytemperatures_controller.rb:18:in `create'
+Started GET "/humen/new" for 103.5.142.122 at 2021-05-23 07:27:31 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/humen/new"):
+  
+actionpack (5.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.6) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/humen/new" for 103.5.142.122 at 2021-05-23 07:28:25 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/humen/new"):
+  
+actionpack (5.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.6) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/users/sign_in" for 103.5.142.122 at 2021-05-23 07:28:28 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by Users::SessionsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Redirected to https://7efe9a1d90d34dc89c9e319e36ca0a12.vfs.cloud9.us-east-2.amazonaws.com/bodytemperatures/new
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 29ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/humen/new" for 103.5.142.122 at 2021-05-23 07:28:30 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/humen/new"):
+  
+actionpack (5.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.6) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/bodytemperatures/new" for 103.5.142.122 at 2021-05-23 07:28:32 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by BodytemperaturesController#new as HTML
+  Rendering bodytemperatures/new.html.erb within layouts/application
+  Rendered bodytemperatures/new.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 111ms (Views: 109.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/employees/new" for 103.5.142.122 at 2021-05-23 07:28:59 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by EmployeesController#new as HTML
+  Rendering employees/new.html.erb within layouts/application
+  Rendered employees/new.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 147ms (Views: 137.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sign_out" for 103.5.142.122 at 2021-05-23 07:29:03 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by Devise::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Redirected to https://7efe9a1d90d34dc89c9e319e36ca0a12.vfs.cloud9.us-east-2.amazonaws.com/
+Completed 302 Found in 13ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 103.5.142.122 at 2021-05-23 07:29:03 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by HomesController#index as HTML
+Redirected to https://7efe9a1d90d34dc89c9e319e36ca0a12.vfs.cloud9.us-east-2.amazonaws.com/users/sign_in
+Completed 302 Found in 5ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 103.5.142.122 at 2021-05-23 07:29:03 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by Users::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 110ms (Views: 109.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 103.5.142.122 at 2021-05-23 07:29:07 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tUczeUMURXnUzJx6GUP+3lhVPnhPrMAHye/8ApNXOVU0hmsaVmLAhqCR7cPmRZRbLRguecMAbLDB3yrW4hfr1g==", "user"=>{"name"=>"会社", "email"=>"fsaaa9111@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"ログイン"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "fsaaa9111@gmail.com"], ["LIMIT", 1]]
+  ↳ /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Redirected to https://7efe9a1d90d34dc89c9e319e36ca0a12.vfs.cloud9.us-east-2.amazonaws.com/bodytemperatures/new
+Completed 302 Found in 323ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/bodytemperatures/new" for 103.5.142.122 at 2021-05-23 07:29:07 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by BodytemperaturesController#new as HTML
+  Rendering bodytemperatures/new.html.erb within layouts/application
+  Rendered bodytemperatures/new.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 90ms (Views: 89.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/employees/new" for 103.5.142.122 at 2021-05-23 07:29:14 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by EmployeesController#new as HTML
+  Rendering employees/new.html.erb within layouts/application
+  Rendered employees/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 100ms (Views: 99.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/employees/new" for 103.5.142.122 at 2021-05-23 07:29:17 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by EmployeesController#new as HTML
+  Rendering employees/new.html.erb within layouts/application
+  Rendered employees/new.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 112ms (Views: 110.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/employees/new" for 103.5.142.122 at 2021-05-23 07:29:18 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by EmployeesController#new as HTML
+  Rendering employees/new.html.erb within layouts/application
+  Rendered employees/new.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 85ms (Views: 84.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/employees/new" for 103.5.142.122 at 2021-05-23 07:29:18 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by EmployeesController#new as HTML
+  Rendering employees/new.html.erb within layouts/application
+  Rendered employees/new.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 112ms (Views: 111.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/employees" for 103.5.142.122 at 2021-05-23 07:29:29 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by EmployeesController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"US3wSvr/PKu2Ye4VjGdAeyVwo4LepQ9D4gIfas7cD5Mm5oF4Ww7PYJr7FHFLe70F3Gu+z6yOehzEhELUgZCw7w==", "employee"=>{"name"=>"中阿賀", "number"=>"262552"}, "commit"=>"登録する"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/employees_controller.rb:11
+  [1m[36mEmployee Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "employees" WHERE "employees"."name" = ? LIMIT ?[0m  [["name", "中阿賀"], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:11
+  [1m[36mEmployee Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "employees" WHERE "employees"."number" = ? LIMIT ?[0m  [["number", 262552], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:11
+  [1m[36mEmployee Create (1.7ms)[0m  [1m[32mINSERT INTO "employees" ("name", "number", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "中阿賀"], ["number", 262552], ["created_at", "2021-05-23 07:29:29.102246"], ["updated_at", "2021-05-23 07:29:29.102246"]]
+  ↳ app/controllers/employees_controller.rb:11
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/employees_controller.rb:11
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/employees_controller.rb:12
+  [1m[36mEmployee Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "employees" WHERE "employees"."name" = ? AND "employees"."id" != ? LIMIT ?[0m  [["name", "中阿賀"], ["id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:12
+  [1m[36mEmployee Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "employees" WHERE "employees"."number" = ? AND "employees"."id" != ? LIMIT ?[0m  [["number", 262552], ["id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/employees_controller.rb:12
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/employees_controller.rb:12
+Redirected to https://7efe9a1d90d34dc89c9e319e36ca0a12.vfs.cloud9.us-east-2.amazonaws.com/bodytemperatures/new
+Completed 200 OK in 19ms (ActiveRecord: 6.4ms)
+
+
+Started GET "/bodytemperatures/new" for 103.5.142.122 at 2021-05-23 07:29:29 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by BodytemperaturesController#new as HTML
+  Rendering bodytemperatures/new.html.erb within layouts/application
+  Rendered bodytemperatures/new.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 94ms (Views: 93.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/employees/" for 103.5.142.122 at 2021-05-23 07:29:38 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by EmployeesController#index as HTML
+  Rendering employees/index.html.erb within layouts/application
+  Rendered employees/index.html.erb within layouts/application (1.8ms)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    61:   
+    62:    <tbody>
+    63:     <tr>
+    64:       <% @human.each do |human| %>
+    65:       <td><%= human.name %></td>
+    66:       <td><%= human.number %></td>
+    67:       <td>
+  
+app/views/employees/index.html.erb:64:in `_app_views_employees_index_html_erb___3791645266145691337_69942726374740'
+Started GET "/employees/" for 103.5.142.122 at 2021-05-23 07:29:38 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by EmployeesController#index as HTML
+  Rendering employees/index.html.erb within layouts/application
+  Rendered employees/index.html.erb within layouts/application (1.9ms)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    61:   
+    62:    <tbody>
+    63:     <tr>
+    64:       <% @human.each do |human| %>
+    65:       <td><%= human.name %></td>
+    66:       <td><%= human.number %></td>
+    67:       <td>
+  
+app/views/employees/index.html.erb:64:in `_app_views_employees_index_html_erb___3791645266145691337_69942712478960'
+Started GET "/employees/" for 103.5.142.122 at 2021-05-23 07:30:29 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by EmployeesController#index as HTML
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees"[0m
+  ↳ app/views/employees/index.html.erb:64
+  Rendered employees/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 89ms (Views: 87.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/employees/" for 103.5.142.122 at 2021-05-23 07:30:33 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by EmployeesController#index as HTML
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees"[0m
+  ↳ app/views/employees/index.html.erb:64
+  Rendered employees/index.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 104ms (Views: 103.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/employees/new" for 103.5.142.122 at 2021-05-23 07:30:35 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by EmployeesController#new as HTML
+  Rendering employees/new.html.erb within layouts/application
+  Rendered employees/new.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 86ms (Views: 85.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/bodytemperatures/" for 103.5.142.122 at 2021-05-23 07:30:37 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by BodytemperaturesController#index as HTML
+  Rendering bodytemperatures/index.html.erb within layouts/application
+  [1m[36mBodytemperature Load (0.2ms)[0m  [1m[34mSELECT "bodytemperatures".* FROM "bodytemperatures" WHERE "bodytemperatures"."day" = ? ORDER BY "bodytemperatures"."reason" DESC[0m  [["day", "2021-05-23"]]
+  ↳ app/views/bodytemperatures/index.html.erb:84
+  Rendered bodytemperatures/index.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 95ms (Views: 92.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/humen/" for 103.5.142.122 at 2021-05-23 07:30:38 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/humen"):
+  
+actionpack (5.2.6) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:22:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.6) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.6) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.6) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.6) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.6) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.6) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/bodytemperatures/" for 103.5.142.122 at 2021-05-23 07:30:42 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by BodytemperaturesController#index as HTML
+  Rendering bodytemperatures/index.html.erb within layouts/application
+  [1m[36mBodytemperature Load (0.1ms)[0m  [1m[34mSELECT "bodytemperatures".* FROM "bodytemperatures" WHERE "bodytemperatures"."day" = ? ORDER BY "bodytemperatures"."reason" DESC[0m  [["day", "2021-05-23"]]
+  ↳ app/views/bodytemperatures/index.html.erb:84
+  Rendered bodytemperatures/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 105ms (Views: 103.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/bodytemperatures/" for 103.5.142.122 at 2021-05-23 07:31:14 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by BodytemperaturesController#index as HTML
+  Rendering bodytemperatures/index.html.erb within layouts/application
+  [1m[36mBodytemperature Load (0.1ms)[0m  [1m[34mSELECT "bodytemperatures".* FROM "bodytemperatures" WHERE "bodytemperatures"."day" = ? ORDER BY "bodytemperatures"."reason" DESC[0m  [["day", "2021-05-23"]]
+  ↳ app/views/bodytemperatures/index.html.erb:84
+  Rendered bodytemperatures/index.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 181ms (Views: 179.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/employees/" for 103.5.142.122 at 2021-05-23 07:31:17 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by EmployeesController#index as HTML
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees"[0m
+  ↳ app/views/employees/index.html.erb:64
+  Rendered employees/index.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 82ms (Views: 81.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/bodytemperatures/new" for 103.5.142.122 at 2021-05-23 07:31:21 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by BodytemperaturesController#new as HTML
+  Rendering bodytemperatures/new.html.erb within layouts/application
+  Rendered bodytemperatures/new.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 116ms (Views: 112.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/employees/" for 103.5.142.122 at 2021-05-23 07:31:24 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by EmployeesController#index as HTML
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees"[0m
+  ↳ app/views/employees/index.html.erb:64
+  Rendered employees/index.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 86ms (Views: 84.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/bodytemperatures/new" for 103.5.142.122 at 2021-05-23 07:31:27 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by BodytemperaturesController#new as HTML
+  Rendering bodytemperatures/new.html.erb within layouts/application
+  Rendered bodytemperatures/new.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 86ms (Views: 85.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/bodytemperatures" for 103.5.142.122 at 2021-05-23 07:31:31 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by BodytemperaturesController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hR4dL9sUPx1rf8xDPa4pe+oz4dYuGCl1LTw29LEiBaWG7V6M0gd89uwnubbMXEgIBQPuZ8+9DP+VQu1WcjxpLA==", "bodytemperature"=>{"number"=>"262552", "temper"=>"36.0", "item"=>"体調に問題はない", "reason"=>""}, "commit"=>"登録する"}
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."number" = ? LIMIT ?[0m  [["number", 262552], ["LIMIT", 1]]
+  ↳ app/controllers/bodytemperatures_controller.rb:17
+Unpermitted parameter: :number
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/bodytemperatures_controller.rb:20
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/bodytemperatures_controller.rb:20
+Completed 500 Internal Server Error in 49ms (ActiveRecord: 0.2ms)
+
+
+  
+NoMethodError (undefined method `number' for #<Bodytemperature:0x00007f399e963f28>):
+  
+app/controllers/bodytemperatures_controller.rb:20:in `create'
+Started GET "/bodytemperatures/new" for 103.5.142.122 at 2021-05-23 07:33:48 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by BodytemperaturesController#new as HTML
+  Rendering bodytemperatures/new.html.erb within layouts/application
+  Rendered bodytemperatures/new.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 103ms (Views: 92.6ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/bodytemperatures" for 103.5.142.122 at 2021-05-23 07:33:54 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by BodytemperaturesController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GHfF+2GH/pdQsnv1qgU950jPMfZiEhbOcRjq155vXCKCMbAm7HYVpPOKLBxYkRjIBpwnKTatSmExtIj68WDwwg==", "bodytemperature"=>{"number"=>"262552", "temper"=>"36.0", "item"=>"体調に問題はない", "reason"=>""}, "commit"=>"登録する"}
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."number" = ? LIMIT ?[0m  [["number", 262552], ["LIMIT", 1]]
+  ↳ app/controllers/bodytemperatures_controller.rb:17
+Unpermitted parameter: :number
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/bodytemperatures_controller.rb:20
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/bodytemperatures_controller.rb:20
+Completed 500 Internal Server Error in 36ms (ActiveRecord: 0.8ms)
+
+
+  
+NoMethodError (undefined method `number' for #<Bodytemperature:0x00007f399ccfdbe0>):
+  
+app/controllers/bodytemperatures_controller.rb:20:in `create'
+Started GET "/bodytemperatures/new" for 103.5.142.122 at 2021-05-23 07:34:38 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by BodytemperaturesController#new as HTML
+  Rendering bodytemperatures/new.html.erb within layouts/application
+  Rendered bodytemperatures/new.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 121ms (Views: 108.5ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/bodytemperatures" for 103.5.142.122 at 2021-05-23 07:34:43 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by BodytemperaturesController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FvpAT+IGif/ahNmMwm43GcQfO16ECff8nDNWFJInUaKMvDWSb/dizHm8jmUw+hI2ikwtgdC2q1PcnzQ5/Sj9Qg==", "bodytemperature"=>{"number"=>"262552", "temper"=>"36.0", "item"=>"体調に問題はない", "reason"=>""}, "commit"=>"登録する"}
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."number" = ? LIMIT ?[0m  [["number", 262552], ["LIMIT", 1]]
+  ↳ app/controllers/bodytemperatures_controller.rb:17
+Unpermitted parameter: :number
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/bodytemperatures_controller.rb:20
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/bodytemperatures_controller.rb:20
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 0.7ms)
+
+
+  
+NoMethodError (undefined method `number' for #<Bodytemperature:0x00007f399d3a42c8>):
+  
+app/controllers/bodytemperatures_controller.rb:20:in `create'
+Started POST "/bodytemperatures" for 103.5.142.122 at 2021-05-23 07:35:37 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by BodytemperaturesController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FvpAT+IGif/ahNmMwm43GcQfO16ECff8nDNWFJInUaKMvDWSb/dizHm8jmUw+hI2ikwtgdC2q1PcnzQ5/Sj9Qg==", "bodytemperature"=>{"number"=>"262552", "temper"=>"36.0", "item"=>"体調に問題はない", "reason"=>""}, "commit"=>"登録する"}
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."number" = ? LIMIT ?[0m  [["number", 262552], ["LIMIT", 1]]
+  ↳ app/controllers/bodytemperatures_controller.rb:17
+Unpermitted parameter: :number
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/bodytemperatures_controller.rb:20
+  [1m[36mBodytemperature Create (6.4ms)[0m  [1m[32mINSERT INTO "bodytemperatures" ("temper", "created_at", "updated_at", "reason", "item", "day", "employee_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["temper", 36.0], ["created_at", "2021-05-23 07:35:37.884017"], ["updated_at", "2021-05-23 07:35:37.884017"], ["reason", ""], ["item", "体調に問題はない"], ["day", "2021-05-23"], ["employee_id", 25]]
+  ↳ app/controllers/bodytemperatures_controller.rb:20
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/bodytemperatures_controller.rb:20
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/bodytemperatures_controller.rb:21
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/bodytemperatures_controller.rb:21
+Redirected to https://7efe9a1d90d34dc89c9e319e36ca0a12.vfs.cloud9.us-east-2.amazonaws.com/bodytemperatures/new
+Completed 200 OK in 63ms (ActiveRecord: 12.2ms)
+
+
+Started GET "/bodytemperatures/new" for 103.5.142.122 at 2021-05-23 07:35:38 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by BodytemperaturesController#new as HTML
+  Rendering bodytemperatures/new.html.erb within layouts/application
+  Rendered bodytemperatures/new.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 112ms (Views: 110.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/bodytemperatures/" for 103.5.142.122 at 2021-05-23 07:35:41 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by BodytemperaturesController#index as HTML
+  Rendering bodytemperatures/index.html.erb within layouts/application
+  [1m[36mBodytemperature Load (0.2ms)[0m  [1m[34mSELECT "bodytemperatures".* FROM "bodytemperatures" WHERE "bodytemperatures"."day" = ? ORDER BY "bodytemperatures"."reason" DESC[0m  [["day", "2021-05-23"]]
+  ↳ app/views/bodytemperatures/index.html.erb:84
+  [1m[36mEmployee Load (0.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  ↳ app/views/bodytemperatures/index.html.erb:86
+  Rendered bodytemperatures/index.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 94ms (Views: 92.5ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/bodytemperatures/8" for 103.5.142.122 at 2021-05-23 07:35:50 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by BodytemperaturesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"wK6GO78Ya8Diw/3ZnBxUJJIR7SAkT9pe1kBhc0M4d0xa6PPmMumA80H7qjBuiHEL3EL7/3DwhvGW7ANeLDfbrA==", "id"=>"8"}
+  [1m[36mBodytemperature Load (0.2ms)[0m  [1m[34mSELECT  "bodytemperatures".* FROM "bodytemperatures" WHERE "bodytemperatures"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/bodytemperatures_controller.rb:32
+  [1m[35m (0.6ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/bodytemperatures_controller.rb:33
+  [1m[36mBodytemperature Destroy (2.0ms)[0m  [1m[31mDELETE FROM "bodytemperatures" WHERE "bodytemperatures"."id" = ?[0m  [["id", 8]]
+  ↳ app/controllers/bodytemperatures_controller.rb:33
+  [1m[35m (4.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/bodytemperatures_controller.rb:33
+Redirected to https://7efe9a1d90d34dc89c9e319e36ca0a12.vfs.cloud9.us-east-2.amazonaws.com/bodytemperatures
+Completed 302 Found in 13ms (ActiveRecord: 7.7ms)
+
+
+Started GET "/bodytemperatures" for 103.5.142.122 at 2021-05-23 07:35:50 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by BodytemperaturesController#index as HTML
+  Rendering bodytemperatures/index.html.erb within layouts/application
+  [1m[36mBodytemperature Load (0.1ms)[0m  [1m[34mSELECT "bodytemperatures".* FROM "bodytemperatures" WHERE "bodytemperatures"."day" = ? ORDER BY "bodytemperatures"."reason" DESC[0m  [["day", "2021-05-23"]]
+  ↳ app/views/bodytemperatures/index.html.erb:84
+  Rendered bodytemperatures/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 105ms (Views: 104.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/employees/" for 103.5.142.122 at 2021-05-23 07:35:51 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by EmployeesController#index as HTML
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees"[0m
+  ↳ app/views/employees/index.html.erb:64
+  Rendered employees/index.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 89ms (Views: 88.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/employees/new" for 103.5.142.122 at 2021-05-23 07:35:57 +0000
+Cannot render console from 103.5.142.122! Allowed networks: 103.5.142.120, 127.0.0.0/127.255.255.255, ::1
+Processing by EmployeesController#new as HTML
+  Rendering employees/new.html.erb within layouts/application
+  Rendered employees/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 104ms (Views: 103.2ms | ActiveRecord: 0.0ms)
+
+

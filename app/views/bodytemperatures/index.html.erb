@@ -2,7 +2,7 @@
 <!--<div class="d-flex justify-content-end">-->
   <div class="sticky-top">
    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="https://7efe9a1d90d34dc89c9e319e36ca0a12.vfs.cloud9.us-east-2.amazonaws.com/humen/new">初めての方はこちら</a>
+    <a class="navbar-brand" href="https://7efe9a1d90d34dc89c9e319e36ca0a12.vfs.cloud9.us-east-2.amazonaws.com/employees/new">初めての方はこちら</a>
     
     <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">-->
     <!--  <span class="navbar-toggler-icon"></span>-->
@@ -21,7 +21,7 @@
         提出状況
         </a>
         
-        <a class="nav-item nav-link" href="https://7efe9a1d90d34dc89c9e319e36ca0a12.vfs.cloud9.us-east-2.amazonaws.com/humen/">
+        <a class="nav-item nav-link" href="https://7efe9a1d90d34dc89c9e319e36ca0a12.vfs.cloud9.us-east-2.amazonaws.com/employees/">
         <i class="fas fa-users fa-lg"></i>
         登録社員一覧
         </a>
@@ -83,7 +83,7 @@ function getToday() {
    <tbody>
     <% @bodytemperatures.each do |bodytemperature| %>
     <tr class="<%= "red" if bodytemperature.temper >= 37.0  %>">
-      <td><%= bodytemperature.human.name%></td>
+      <td><%= bodytemperature.employee.name%></td>
       <td><%= bodytemperature.reason %></td>
       <td><%= bodytemperature.temper %></td>
       <td>
