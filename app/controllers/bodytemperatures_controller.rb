@@ -1,6 +1,8 @@
 class BodytemperaturesController < ApplicationController
    def index
-    @bodytemperatures = Bodytemperature.where(day:Date.today).order(reason: "DESC")
+    @bodytemperatures = Bodytemperature.where(day:Date.today).order(reason: "DESC").order(temper: "DESC")
+    # @emeployees = Employee.all.bodytemperatures
+    @unsubmitters = Bodytemperature.where.not(day:Date.today)
     # @bodytemperatures = Bodytemperature.all
    end
    
@@ -17,21 +19,24 @@ class BodytemperaturesController < ApplicationController
      @employee =  Employee.find_by(number: params[:bodytemperature][:number])
      @bodytemperature = @employee.bodytemperatures.new(bodytemperatures_params)
      @bodytemperature.day = Date.today
-     @bodytemperature.save
-     if @bodytemperature.save
-     redirect_to new_bodytemperature_path, success:"体温の登録が完了しました。"
+     if (@bodytemperature.save && @bodytemperature.temper <= 36.9 && @bodytemperature.condition == "体調に問題はない" ) 
+     redirect_to new_bodytemperature_url, success:"体温の登録が完了しました。本日も１日頑張ってください。"
+     elsif (@bodytemperature.save && @bodytemperature.temper <= 36.9 && @bodytemperature.condition == "気分がすぐれない" )
+     redirect_to new_bodytemperature_url, success:"体温の登録が完了しました。体調が悪化したら上司に報告しましょう。"
+     elsif(@bodytemperature.save && @bodytemperature.temper >=37.0)
+     redirect_to  bodytemperatures_danger_url
      else
-     redirect_to new_bodytemperature_path, danger:"登録できませんでした。登録した値を修正してください."
+     redirect_to new_bodytemperature_url, danger:"登録できませんでした。登録した値を修正してください."
      end
    end
-   
+  
    
    
    
    def destroy
      @bodytemperature = Bodytemperature.find(params[:id])
      @bodytemperature.destroy
-     redirect_to bodytemperatures_path, success: "削除が完了しました"
+     redirect_to bodytemperatures_url, success: "削除が完了しました"
    end
    
     def edit
@@ -42,23 +47,35 @@ class BodytemperaturesController < ApplicationController
 
     def update
      @bodytemperature = Bodytemperature.find(params[:id])
-     @bodytemperature.employee.number = params[:bodytemperature][:employee_id]
      @bodytemperature.temper = params[:bodytemperature][:temper]
-     @bodytemperature.save
-     if @bodytemperature.save
-     redirect_to bodytemperatures_path, success: '編集が完了しました'
+     @bodytemperature.condition = params[:bodytemperature][:condition]
+     @bodytemperature.reason = params[:bodytemperature][:reason]
+     # @bodytemperature.save
+     
+     if (@bodytemperature.save && @bodytemperature.temper <= 36.9 && @bodytemperature.condition == "体調に問題はない" ) 
+     redirect_to bodytemperatures_url, success:"体温の登録が完了しました。本日も１日頑張ってください。"
+     elsif (@bodytemperature.save && @bodytemperature.temper <= 36.9 && @bodytemperature.condition == "気分がすぐれない" )
+     redirect_to bodytemperatures_url, success:"体温の登録が完了しました。体調が悪化したら上司に報告しましょう。"
+     elsif(@bodytemperature.save && @bodytemperature.temper >=37.0)
+     redirect_to  bodytemperatures_url
+     # "上長に相談しましょう"
      else
-     redirect_to edit_bodytemperature_path, alart: '編集に失敗しました。入力した値を修正してください。'
+     redirect_to new_bodytemperature_url, danger:"登録できませんでした。登録した値を修正してください."
      end
+     
     end
    
     # def alert
     
     # end
+    
+    def danger
+      
+    end
    
 private
     def bodytemperatures_params
-        params.require(:bodytemperature).permit(:temper,:item,:reason)
+        params.require(:bodytemperature).permit(:temper,:condition,:reason)
     end
    
 end

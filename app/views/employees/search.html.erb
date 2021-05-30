@@ -1,0 +1,35 @@
+    <table class="table table-bordered table-info">
+  <thead>
+    <tr>
+      <th scope="col">社員名</th>
+      <th scope="col">社員番号</th>
+      <th scope="col">削除</th>
+      <th scope="col">編集</th>
+    </tr>
+  </thead>
+  
+  
+   <tbody>
+    <tr>
+      <% @employee.each do |employee| %>
+      <td><%= employee.name %></td>
+      <td><%= employee.number %></td>
+      <td>
+       <div class ="buttons"> 
+       <%= link_to employee, method: :delete, data: { confirm: "本当に削除しますか？" }  do %>
+       <i class="fas fa-trash-alt"></i> 
+       <% end %>
+          <!--<a data-confirm="本当に削除しますか？" rel="nofollow", title: "削除確認"  href ="/employees/<%= employee.id %>" data-method="delete"><i class="fas fa-trash-alt"></i></a>-->
+       </div> 
+      </td>
+      <td>
+          <div class ="buttons">
+          <a href ="/employees/<%= employee.id %>/edit"><i class="fas fa-user-edit"></i></a>
+          </div>
+      </td>
+    </tr>
+　<% end %>
+
+
+   </tbody> 
+ </table>

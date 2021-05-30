@@ -23,6 +23,8 @@ protect_from_forgery
     
     def index
         @employee = Employee.all
+        @employee = Employee.order(number: "ASC")
+        # @employees = Employee.search(params[:name])
         # 社員番号と社員名の一覧を表示する。
     end
     
@@ -46,7 +48,15 @@ protect_from_forgery
         else
         flash[:danger] = '編集に失敗しました。入力した値を修正してください。'
         end
-end
+    end
+    
+    def search
+        if params[:name].present?
+          @employees = Employee.where('name LIKE ?', "%#{params[:name]}%")
+        else
+          @employees = Employee.none
+        end
+    end
     
  private
     def employees_params

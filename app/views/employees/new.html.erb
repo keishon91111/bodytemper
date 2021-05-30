@@ -51,13 +51,14 @@
         <hr></hr>
         <h5>初めに社員番号を登録してください</h5>
         <%= form.label "form-name", "名前を入力してください" %>
-        <%= form.text_field :name, id:"form-name",class:"form-control",placeholder: "名前" %>
+        <%= form.text_field :name, id:"form-name",class:"form-control",placeholder: "名前"%>
    </div>
     
    <div class="form-group">
         <%= form.label "form-number", "社員番号を入力してください" %>
         <%= form.number_field :number, id:"form-number",class:"form-control",placeholder: "社員番号" %>
    </div>
+   
     <%= form.submit "登録する",class:"btn btn-info w-100"%>
 <% end %>
  </div>

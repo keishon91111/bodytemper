@@ -67,9 +67,9 @@
         <%= form.label "form-health", "・体調の状態を選択してください" %>
        <div class="custom-control">
            
-        <%= form.radio_button :item, "体調に問題はない", {checked: true,onclick:"checkradio('none');"}  %> 体調に問題はない
+        <%= form.radio_button :condition, "体調に問題はない", {checked: true,onclick:"checkradio('none');"}  %> 体調に問題はない
         
-        <%= form.radio_button :item, "少し気分がすぐれない", {onClick:"checkradio('inline');"} %> 少し気分がすぐれない
+        <%= form.radio_button :condition, "気分がすぐれない", {onClick:"checkradio('inline');"} %> 気分がすぐれない
        </div>
        
        <div class = "form-group select">
@@ -81,5 +81,5 @@
    </div>
         <%= form.submit "登録する",class:"btn btn-info w-100"%>
   </div>
-</div>
+
 <% end %>

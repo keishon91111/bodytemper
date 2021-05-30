@@ -8,4 +8,7 @@ validates :number, numericality: { only_integer: true }
 
 validates :name, uniqueness: true
 validates :number, uniqueness: true
+
+
 end
+

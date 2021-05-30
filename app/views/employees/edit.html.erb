@@ -38,7 +38,7 @@
 
 
 <h2>社員番号編集画面</h2>
-<p>初めに社員番号を登録してください</p>       
+<p>社員番号を編集してください</p>       
 　<% flash.each do |name, msg| %>
   <div class="alert alert-</div><%= name %>">
     <%= msg %>
@@ -50,16 +50,15 @@
 <%= form_with model: @employee do |form| %>
 <div class = "center">
    <div class="form-group">
-        <%= form.label "form-name", "名前を入力してください" %>
-        <%= form.text_field :name, id:"form-name",class:"form-control",placeholder: "名前" %>
+        <%= form.label "form-name", "名前を編集してください" %>
+        <%= form.text_field :name, id:"form-name",class:"form-control",value: @employee.name %>
    </div>
     
    <div class="form-group">
-        <%= form.label "form-number", "社員番号を入力してください" %>
-        <%= form.number_field :number, id:"form-number",class:"form-control",placeholder: "社員番号" %>
+        <%= form.label "form-number", "社員番号を編集してください" %>
+        <%= form.number_field :number, id:"form-number",class:"form-control",value: @employee.number %>
    </div>
     <%= form.submit "編集する",class:"btn btn-primary"%>
 <% end %>
  </div>
  </body>
-</div>

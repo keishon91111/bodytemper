@@ -67,6 +67,31 @@ function getToday() {
 }
 </script>
 
+    <h2>未提出者一覧</h2>
+      <table class="table table-bordered table-primary">
+          <thead>
+            <tr>
+              <th scope="col">社員名</th>
+            </tr>
+          </thead>
+        <!--</div>-->
+          
+          
+           <tbody>
+            <%  @unsubmitters.each do |bodytemperature| %>
+            <tr>
+              <td><%= bodytemperature.employee.name %></td>
+            </tr>
+        　<% end %>
+           </tbody> 
+      </table>
+    
+    
+    
+    
+    
+    
+    
     
     <table class="table table-bordered table-primary">
   <thead>
@@ -79,6 +104,7 @@ function getToday() {
     </tr>
   </thead>
 </div>
+  
   
    <tbody>
     <% @bodytemperatures.each do |bodytemperature| %>
@@ -95,7 +121,9 @@ function getToday() {
       </td>
       <td>
           <div class ="buttons">
-          <a href ="/bodytemperature/<%= bodytemperature.id %>/edit"><i class="fas fa-user-edit"></i></a>
+          <%= link_to edit_bodytemperature_url(bodytemperature), method: :get do %>
+          <i class="fas fa-user-edit"></i>
+          <% end %>
           </div>
       </td>
     </tr>
