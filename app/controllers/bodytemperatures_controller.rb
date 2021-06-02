@@ -2,20 +2,30 @@ class BodytemperaturesController < ApplicationController
    def index
     @bodytemperatures = Bodytemperature.where(day:Date.today).order(reason: "DESC").order(temper: "DESC")
     # @emeployees = Employee.all.bodytemperatures
-    @unsubmitters = Bodytemperature.where.not(day:Date.today)
+    
+    # @unsubmitters = Bodytemperature.where(day:Date.today) && Employee.where(day:Date.today)
+    @employees_id = Employee.all.map(&:id)
+    # binding.pry
+    @bodytemperatures.each do |bt|
+     @employees_id.delete(bt.employee_id)
+    # binding.pry
+     end
+    #  binding.pry
+    @unsubmitters = Employee.where(id:@employees_id)
+    # binding.pry
+    @employee = Employee.count
+    # @users = User.
+    @user = current_user
     # @bodytemperatures = Bodytemperature.all
    end
    
-   
-   
     
-   def new
+  def new
     @bodytemperature = Bodytemperature.new
-   end
+  end
    
-   def create
+  def create
      require"date"
-    
      @employee =  Employee.find_by(number: params[:bodytemperature][:number])
      @bodytemperature = @employee.bodytemperatures.new(bodytemperatures_params)
      @bodytemperature.day = Date.today
@@ -28,17 +38,17 @@ class BodytemperaturesController < ApplicationController
      else
      redirect_to new_bodytemperature_url, danger:"登録できませんでした。登録した値を修正してください."
      end
-   end
+  end
   
    
    
    
-   def destroy
+  def destroy
      @bodytemperature = Bodytemperature.find(params[:id])
      @bodytemperature.destroy
      redirect_to bodytemperatures_url, success: "削除が完了しました"
-   end
-   
+  end
+  
     def edit
      @bodytemperature = Bodytemperature.find(params[:id])
         
@@ -69,8 +79,10 @@ class BodytemperaturesController < ApplicationController
     
     # end
     
-    def danger
-      
+    def search
+       
+        @bodytemperatures = Bodytemperature.search(params[:number])
+        
     end
    
 private

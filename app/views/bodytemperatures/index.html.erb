@@ -48,6 +48,9 @@
   </p>
 <% end %>
 
+<h4 class="register">社員<%= @employee %>人中</h4>
+<h4><%= @user.name %>さんがログインしています </h4>
+
 <h3 id="view_today"></h3>
 
 <script type="text/javascript">
@@ -67,7 +70,10 @@ function getToday() {
 }
 </script>
 
-    <h2>未提出者一覧</h2>
+
+
+
+    <h2>未提出者一覧<i class="fas fa-search"></i></h2>
       <table class="table table-bordered table-primary">
           <thead>
             <tr>
@@ -78,14 +84,13 @@ function getToday() {
           
           
            <tbody>
-            <%  @unsubmitters.each do |bodytemperature| %>
+            <%  @unsubmitters.each do |employee| %>
             <tr>
-              <td><%= bodytemperature.employee.name %></td>
+              <td><%= employee.name %></td>
             </tr>
-        　<% end %>
+        <% end %>
            </tbody> 
       </table>
-    
     
     
     
@@ -127,7 +132,7 @@ function getToday() {
           </div>
       </td>
     </tr>
-　<% end %>
+<% end %>
    </tbody> 
  </table>
 <!--</div>-->
