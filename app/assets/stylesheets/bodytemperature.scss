@@ -9,3 +9,16 @@
 .register{
     text-align:left;
 }
+
+.fa-search{
+    cursor: pointer;
+    transition:all 0.3s;
+}
+
+.fa-search:hover{
+    background-color:blue;
+}
+
+.fas:hover{
+    color:black;
+}

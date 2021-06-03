@@ -12,8 +12,7 @@
       <div class="navbar-nav">
   
         <a class="nav-item nav-link" href="#">
-        <i class="fas fa-book-open fa-lg"></i>
-        利用方法
+        <i class="fas fa-book-open fa-lg">利用方法</i>
         </a>
         
         <a class="nav-item nav-link" href="https://7efe9a1d90d34dc89c9e319e36ca0a12.vfs.cloud9.us-east-2.amazonaws.com/bodytemperatures/">
@@ -48,7 +47,7 @@
   </p>
 <% end %>
 
-<h4 class="register">社員<%= @employee %>人中</h4>
+<h4 class="register">社員<%= @employee %>人中<%= @unsubmit %>人が未提出</h4>
 <h4><%= @user.name %>さんがログインしています </h4>
 
 <h3 id="view_today"></h3>
@@ -110,10 +109,15 @@ function getToday() {
   </thead>
 </div>
   
+  <h2>体調不良者一覧</h2>
+  
+  
+  
+  <h2>提出者一覧</h2>
   
    <tbody>
     <% @bodytemperatures.each do |bodytemperature| %>
-    <tr class="<%= "red" if bodytemperature.temper >= 37.0  %>">
+    <tr class="<%= "red" if bodytemperature.temper >= 37.0  %>" class="<%= "orange" if bodytemperature.temper < 37.0 && bodytemperature.condition = "気分がすぐれない" %>" >
       <td><%= bodytemperature.employee.name%></td>
       <td><%= bodytemperature.reason %></td>
       <td><%= bodytemperature.temper %></td>
@@ -134,8 +138,7 @@ function getToday() {
     </tr>
 <% end %>
    </tbody> 
+   
+   
  </table>
 <!--</div>-->
-
-
-

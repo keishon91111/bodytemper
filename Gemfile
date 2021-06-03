@@ -11,6 +11,7 @@ gem 'devise'
 gem 'font-awesome-sass'
 gem 'rename'
 gem 'pry-byebug', group: :development
+gem 'ransack'
 # gem 'data-confirmnfirm-modal'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
