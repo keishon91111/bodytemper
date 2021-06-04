@@ -9,11 +9,12 @@ Rails.application.routes.draw do
     resources  :homes
     get "/bodytemperatures/danger" => "bodytemperatures#danger"
   # get"/bodytemperatures/alert", to:"bodytemperatures#alert"
-  
+    get '/bodytemperatures/search', to: 'bodytemperatures#search'
+    
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
     
-    get "/bodytemperatures/search" => "bodytemperatures#search"
+   
     
   end
   

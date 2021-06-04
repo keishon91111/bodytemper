@@ -12,6 +12,7 @@ gem 'font-awesome-sass'
 gem 'rename'
 gem 'pry-byebug', group: :development
 gem 'ransack'
+gem "kaminari", '~> 0.17.0'
 # gem 'data-confirmnfirm-modal'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

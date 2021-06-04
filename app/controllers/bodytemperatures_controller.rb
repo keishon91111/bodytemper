@@ -1,9 +1,14 @@
 class BodytemperaturesController < ApplicationController
  def index
-    @bodytemperatures = Bodytemperature.where(day:Date.today).order(reason: :desc, temper: :desc)
+    @bodytemperatures = Bodytemperature.where(day:Date.today).order(temper: :"DESC")
     # @emeployees = Employee.all.bodytemperatures
     
     # @unsubmitters = Bodytemperature.where(day:Date.today) && Employee.where(day:Date.today)
+    
+    
+    
+    
+    
     @employees_id = Employee.all.map(&:id)
     # binding.pry
     @bodytemperatures.each do |bt|
@@ -12,10 +17,18 @@ class BodytemperaturesController < ApplicationController
      end
     #  binding.pry
     @unsubmitters = Employee.where(id:@employees_id)
-    # binding.pry
+    
+    
     @employee = Employee.count
     @unsubmit = @unsubmitters.count
     @user = current_user
+    
+    
+    @negatives = @bodytemperatures.where(condition:"気分がすぐれない").page(params[:page]).per(2)
+    @positives = @bodytemperatures.where(condition:"体調に問題はない").page(params[:page]).per(2)
+    
+    
+    
     # @bodytemperatures = Bodytemperature.all
    end
    

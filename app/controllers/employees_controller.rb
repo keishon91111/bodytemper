@@ -22,8 +22,8 @@ protect_from_forgery
     
     
     def index
-        @employee = Employee.all
-        @employee = Employee.order(number: "ASC")
+        # @employee = Employee.all
+        @employee = Employee.all.order(number: "ASC").page(params[:page]).per(5)
         # @employees = Employee.search(params[:name])
         # 社員番号と社員名の一覧を表示する。
     end

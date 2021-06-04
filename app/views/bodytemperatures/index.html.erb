@@ -1,5 +1,6 @@
 <!--<div class = "container">-->
 <!--<div class="d-flex justify-content-end">-->
+ <header>
   <div class="sticky-top">
    <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="https://7efe9a1d90d34dc89c9e319e36ca0a12.vfs.cloud9.us-east-2.amazonaws.com/employees/new">初めての方はこちら</a>
@@ -11,27 +12,20 @@
     <div class="collapse navbar-collapse d-flex justify-content-end">
       <div class="navbar-nav">
   
-        <a class="nav-item nav-link" href="#">
-        <i class="fas fa-book-open fa-lg">利用方法</i>
-        </a>
         
         <a class="nav-item nav-link" href="https://7efe9a1d90d34dc89c9e319e36ca0a12.vfs.cloud9.us-east-2.amazonaws.com/bodytemperatures/">
-        <i class="fas fa-user-check fa-lg"></i>
         提出状況
         </a>
         
         <a class="nav-item nav-link" href="https://7efe9a1d90d34dc89c9e319e36ca0a12.vfs.cloud9.us-east-2.amazonaws.com/employees/">
-        <i class="fas fa-users fa-lg"></i>
         登録社員一覧
         </a>
        
         <a class="nav-item nav-link" href="https://7efe9a1d90d34dc89c9e319e36ca0a12.vfs.cloud9.us-east-2.amazonaws.com/bodytemperatures/new">
-        <i class="fas fa-thermometer fa-lg"></i>
         体温を登録
         </a> 
         
-        <a class="nav-link" href="/users/sign_out", method: :delete>
-        <i class="fas fa-users-slash"></i>
+        <a class="nav-link logout" href="/users/sign_out", method: :delete>
         ログアウト
         </a>
            </nav>
@@ -39,6 +33,7 @@
       </div>
     </div>
 <!--</div>-->
+</header>
 
  <!--<div class = "container">-->
   <% flash.each do |key, value| %>
@@ -69,9 +64,19 @@ function getToday() {
 }
 </script>
 
+<div class= "search-form" >
+    <h4>提出者検索フォーム</h4>
+    <hr></hr>
+    <%= form_with model: @bodytemperature do |form| %>
+    　  <div class="form-group">
+            <%= form.label "form-number", "社員番号を入力してください" %>
+            <%= form.number_field :number, id:"form-number",class:"form-control" ,step:1,placeholder: "社員番号" %>
+        </div>
+        <%= form.submit "検索する",class:"btn btn-info w-100"%>
+</div>
+<% end %>
 
-
-
+<div class = "unsubmit">
     <h2>未提出者一覧<i class="fas fa-search"></i></h2>
       <table class="table table-bordered table-primary">
           <thead>
@@ -90,14 +95,13 @@ function getToday() {
         <% end %>
            </tbody> 
       </table>
+</div>
     
     
     
-    
-    
-    
-    
-    <table class="table table-bordered table-primary">
+ <div class = "negative">  
+      <h2>体調不良者一覧</h2>
+     <table class="table table-bordered table-primary">
   <thead>
     <tr>
       <th scope="col">社員名</th>
@@ -107,17 +111,10 @@ function getToday() {
       <th scope="col">編集</th>
     </tr>
   </thead>
-</div>
-  
-  <h2>体調不良者一覧</h2>
-  
-  
-  
-  <h2>提出者一覧</h2>
   
    <tbody>
-    <% @bodytemperatures.each do |bodytemperature| %>
-    <tr class="<%= "red" if bodytemperature.temper >= 37.0  %>" class="<%= "orange" if bodytemperature.temper < 37.0 && bodytemperature.condition = "気分がすぐれない" %>" >
+    <% @negatives.each do |bodytemperature| %>
+    <tr class="<%= "red" if bodytemperature.temper >= 37.0  %> <%= "orange" if bodytemperature.temper < 37.0 %>"  >
       <td><%= bodytemperature.employee.name%></td>
       <td><%= bodytemperature.reason %></td>
       <td><%= bodytemperature.temper %></td>
@@ -138,7 +135,51 @@ function getToday() {
     </tr>
 <% end %>
    </tbody> 
-   
-   
  </table>
-<!--</div>-->
+<%= paginate @negatives %>
+</div>
+    
+    
+    
+    
+<div class = "positive">
+  <h2>提出者一覧</h2>  
+    <table class="table table-bordered table-primary">
+  <thead>
+    <tr>
+      <th scope="col">社員名</th>
+      <th scope="col">体調の状態</th>
+      <th scope="col">体温</th>
+      <th scope="col">削除</th>
+      <th scope="col">編集</th>
+    </tr>
+  </thead>
+  
+
+  
+   <tbody>
+    <% @positives.each do |bodytemperature| %>
+<tr>
+      <td><%= bodytemperature.employee.name%></td>
+      <td><%= bodytemperature.reason %></td>
+      <td><%= bodytemperature.temper %></td>
+      <td>
+         <div class ="buttons"> 
+         <%= link_to bodytemperature, method: :delete, data: { confirm: "本当に削除しますか？" }  do %>
+         <i class="fas fa-trash-alt"></i> 
+         <% end %>
+         </div> 
+      </td>
+      <td>
+          <div class ="buttons">
+          <%= link_to edit_bodytemperature_url(bodytemperature), method: :get do %>
+          <i class="fas fa-user-edit"></i>
+          <% end %>
+          </div>
+      </td>
+    </tr>
+<% end %>
+   </tbody> 
+ </table>
+ <%= paginate @positives %>
+</div>
