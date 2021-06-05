@@ -17,15 +17,15 @@ class BodytemperaturesController < ApplicationController
      end
     #  binding.pry
     @unsubmitters = Employee.where(id:@employees_id)
-    
+    @unsubmitters = Kaminari.paginate_array(@unsubmitters).page(params[:page]).per(5)
     
     @employee = Employee.count
     @unsubmit = @unsubmitters.count
     @user = current_user
     
     
-    @negatives = @bodytemperatures.where(condition:"気分がすぐれない").page(params[:page]).per(2)
-    @positives = @bodytemperatures.where(condition:"体調に問題はない").page(params[:page]).per(2)
+    @negatives = @bodytemperatures.where(condition:"気分がすぐれない").page(params[:page]).per(5)
+    @positives = @bodytemperatures.where(condition:"体調に問題はない").page(params[:page]).per(5)
     
     
     

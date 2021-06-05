@@ -95,6 +95,9 @@ function getToday() {
         <% end %>
            </tbody> 
       </table>
+ <ul class="pagination">
+ <%= paginate @unsubmitters %>
+ </ul>
 </div>
     
     
@@ -136,7 +139,9 @@ function getToday() {
 <% end %>
    </tbody> 
  </table>
-<%= paginate @negatives %>
+  <ul class="pagination">
+ <%= paginate @negatives %>
+ </ul>
 </div>
     
     
@@ -181,5 +186,7 @@ function getToday() {
 <% end %>
    </tbody> 
  </table>
+ <ul class = "pagination">
  <%= paginate @positives %>
+ </ul>
 </div>

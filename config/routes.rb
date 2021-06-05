@@ -7,9 +7,9 @@ Rails.application.routes.draw do
     resources  :bodytemperatures
     resources  :employees
     resources  :homes
-    get "/bodytemperatures/danger" => "bodytemperatures#danger"
+    get "/bodytemperature/danger", to:"bodytemperatures#danger"
   # get"/bodytemperatures/alert", to:"bodytemperatures#alert"
-    get '/bodytemperatures/search', to: 'bodytemperatures#search'
+    get "/bodytemperature/search", to:'bodytemperatures#search'
     
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'

@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .navbar-nav a i{
-    color:#BBBBBB;
+    color:#696969;
 }
 
 #reason{
@@ -15,15 +15,16 @@
 
 .fa-search{
     cursor: pointer;
-    transition:all 0.3s;
+    // transition:all 0.3s;
 }
 
 .fa-search:hover{
-    background-color:blue;
+    background-color: #696969;
+    border-radius: 5px;
 }
 
 .fas:hover{
-    color:#00FFFF;
+    color: #93c9ff;
 }
 
 
