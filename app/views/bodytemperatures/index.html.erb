@@ -43,41 +43,27 @@
 <% end %>
 
 <h4 class="register">社員<%= @employee %>人中<%= @unsubmit %>人が未提出</h4>
-<h4><%= @user.name %>さんがログインしています </h4>
 
-<h3 id="view_today"></h3>
+<div class = "today">
+<h1 id="view_today"></h1><i class="fas fa-search i-sea"></i>
+</div>
 
-<script type="text/javascript">
-document.getElementById("view_today").innerHTML = getToday();
 
-function getToday() {
-	var now = new Date();
-	var mon = now.getMonth()+1; //１を足すこと
-	var day = now.getDate();
-	var you = now.getDay(); //曜日(0～6=日～土)
 
-	//曜日の選択肢
-	var youbi = new Array("日","月","火","水","木","金","土");
-	//出力用
-	var s =   mon + "月" + day + "日(" + youbi[you] + ")の提出状況";
-	return s;
-}
-</script>
 
 <div class= "search-form" >
     <h4>提出者検索フォーム</h4>
     <hr></hr>
     <%= form_with model: @bodytemperature do |form| %>
     　  <div class="form-group">
-            <%= form.label "form-number", "社員番号を入力してください" %>
-            <%= form.number_field :number, id:"form-number",class:"form-control" ,step:1,placeholder: "社員番号" %>
+            <%= form.number_field :number, id:"form-number",class:"form-control" ,step:1,placeholder: "社員番号", :required => true %>
         </div>
         <%= form.submit "検索する",class:"btn btn-info w-100"%>
 </div>
 <% end %>
 
 <div class = "unsubmit">
-    <h2>未提出者一覧<i class="fas fa-search"></i></h2>
+    <h1>未提出者一覧</h1>
       <table class="table table-bordered table-primary">
           <thead>
             <tr>
@@ -103,7 +89,7 @@ function getToday() {
     
     
  <div class = "negative">  
-      <h2>体調不良者一覧</h2>
+      <h1>体調不良者一覧</h1>
      <table class="table table-bordered table-primary">
   <thead>
     <tr>
@@ -148,7 +134,7 @@ function getToday() {
     
     
 <div class = "positive">
-  <h2>提出者一覧</h2>  
+  <h1>提出者一覧</h1>  
     <table class="table table-bordered table-primary">
   <thead>
     <tr>
@@ -190,3 +176,31 @@ function getToday() {
  <%= paginate @positives %>
  </ul>
 </div>
+
+<script type="text/javascript">
+document.querySelector("#view_today").innerHTML = getToday();
+
+function getToday() {
+	var now = new Date();
+	var mon = now.getMonth()+1; //１を足すこと
+	var day = now.getDate();
+	var you = now.getDay(); //曜日(0～6=日～土)
+
+	//曜日の選択肢
+	var youbi = new Array("日","月","火","水","木","金","土");
+	//出力用
+	var s =   mon + "月" + day + "日(" + youbi[you] + ")の提出状況";
+	return s;
+}
+
+
+
+
+$(function () {
+    $('.fa-search').on('click', () => {
+        $('.search-form').slideToggle("fast");
+    });
+});
+
+
+</script>

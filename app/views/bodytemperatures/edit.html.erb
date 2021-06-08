@@ -55,7 +55,7 @@
     
    <div class="form-group">
         <%= form.label "form-temper", "本日計測した体温" %>
-        <%= form.number_field :temper, id:"form-temper",class:"form-control" ,value:@bodytemperature.temper,min:34.0,max:42.0,step:0.1,placeholder:@bodytemperature.temper %>
+        <%= form.number_field :temper, id:"form-temper",class:"form-control" ,value:@bodytemperature.temper,min:34.0,max:42.0,step:0.1,placeholder:"体温"%>
    </div>
    
    
@@ -72,7 +72,7 @@
        <div class = "form-group select">
           <div id = "reason">
           <%= form.label "form-reason", "・具体的に症状を記入してください" %>  
-          <%= form.text_field :reason, id:"form-reason", class:"form-control",value:@bodytemperature.reason,placeholder:"例:くしゃみや鼻水がでる,頭が痛いなど"%>
+          <%= form.text_field :reason, id:"form-reason", class:"form-control",value:@bodytemperature.reason,placeholder:"例:くしゃみや鼻水がでる,頭が痛いなど" %>
           </div>
        </div>
    </div>

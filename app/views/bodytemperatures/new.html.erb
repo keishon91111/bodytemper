@@ -44,38 +44,39 @@
 <% end %>
 
 
-<div class ="center " name="Form-temperature">
 
-<%= form_with model: @bodytemperature do |form| %>
+<div class ="center " name="Form-temperature">
+<%= form_with model: @bodytemperature do |form|  %>
+
+
  <h2>体温登録画面</h2>
     <hr></hr>
     <h5>社員番号と体温、健康状態を入力してください</h5>
    <div class="form-group">
-        <%= form.label "form-bodytemperature.number", "登録した社員番号" %><font color="red">（必須）</font>
-        <%= form.number_field :number, id:"form-bodytemperature.number",class:"form-control",placeholder: "社員番号" %>
+        <%= form.label "form-bodytemperature.number", "登録した社員番号",class:"text-left" %><font color="red">（必須）</font>
+        <%= form.number_field :number, id:"form-bodytemperature.number",class:"form-control",placeholder: "社員番号", :required => true %>
    </div>
     
     
    <div class="form-group">
-        <%= form.label "form-temper", "本日計測した体温" %><font color="red">（必須）</font>
-        <%= form.number_field :temper, id:"form-temper",class:"form-control" ,value:36.0,min:34.0,max:42.0,step:0.1,placeholder: "体温" %>
+        <%= form.label "form-temper", "本日計測した体温",class:"text-left" %><font color="red">（必須）</font>
+        <%= form.number_field :temper, id:"form-temper",class:"form-control" ,value:36.0,min:34.0,max:42.0,step:0.1,placeholder: "体温", :required => true %>
    </div>
    
    
    
   <div class = "radio">
-        <%= form.label "form-health", "・体調の状態を選択してください" %>
+        <%= form.label "form-health", "3 体調の状態を選択してください",class:"text-left"  %><font color="red">(必須)</font>
        <div class="custom-control">
            
-        <%= form.radio_button :condition, "体調に問題はない", {checked: true,onclick:"checkradio('none');"}  %> 体調に問題はない
-        
-        <%= form.radio_button :condition, "気分がすぐれない", {onClick:"checkradio('inline');"} %> 気分がすぐれない
+        <%= form.radio_button :condition, "体調に問題はない", {checked: true,onclick:"checkradio('none');"}  %> A:体調に問題はない
+        <%= form.radio_button :condition, "気分がすぐれない", {onClick:"checkradio('inline');"} %> B:気分がすぐれない
        </div>
        
        <div class = "form-group select">
           <div id = "reason">
-          <%= form.label "form-reason", "・具体的に症状を記入してください" %>  
-          <%= form.text_field :reason, id:"form-reason", class:"form-control",placeholder:"例:くしゃみや鼻水がでる,頭が痛いなど"%>
+          <%= form.label "form-reason", "4 Bを選んだ方は、15文字以内で症状を記入してください",class:"text-left" %>  
+          <%= form.text_field :reason, id:"form-reason", class:"form-control",placeholder:"例:くしゃみや鼻水がでる,頭が痛いなど" %>
           </div>
        </div>
    </div>

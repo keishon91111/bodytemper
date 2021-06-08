@@ -5,10 +5,6 @@ class BodytemperaturesController < ApplicationController
     
     # @unsubmitters = Bodytemperature.where(day:Date.today) && Employee.where(day:Date.today)
     
-    
-    
-    
-    
     @employees_id = Employee.all.map(&:id)
     # binding.pry
     @bodytemperatures.each do |bt|
@@ -20,7 +16,7 @@ class BodytemperaturesController < ApplicationController
     @unsubmitters = Kaminari.paginate_array(@unsubmitters).page(params[:page]).per(5)
     
     @employee = Employee.count
-    @unsubmit = @unsubmitters.count
+    @unsubmit = @unsubmitters.total_count
     @user = current_user
     
     
@@ -42,14 +38,18 @@ class BodytemperaturesController < ApplicationController
      @employee =  Employee.find_by(number: params[:bodytemperature][:number])
      @bodytemperature = @employee.bodytemperatures.new(bodytemperatures_params)
      @bodytemperature.day = Date.today
+     
+     
      if (@bodytemperature.save && @bodytemperature.temper <= 36.9 && @bodytemperature.condition == "体調に問題はない" ) 
      redirect_to new_bodytemperature_url, success:"体温の登録が完了しました。本日も１日頑張ってください。"
      elsif (@bodytemperature.save && @bodytemperature.temper <= 36.9 && @bodytemperature.condition == "気分がすぐれない" )
      redirect_to new_bodytemperature_url, success:"体温の登録が完了しました。体調が悪化したら上司に報告しましょう。"
-     elsif(@bodytemperature.save && @bodytemperature.temper >=37.0)
+     elsif(@bodytemperature.save && @bodytemperature.temper >=37.0 && @bodytemperature.condition == "気分がすぐれない")
      redirect_to  bodytemperatures_danger_url
      else
-     redirect_to new_bodytemperature_url, danger:"登録できませんでした。登録した値を修正してください."
+      render "new"
+     
+     
      end
   end
   

@@ -15,26 +15,17 @@
 
 .fa-search{
     cursor: pointer;
+    font-size: 2.2em;
     // transition:all 0.3s;
 }
 
 .fa-search:hover{
     background-color: #696969;
     border-radius: 5px;
-}
-
-.fas:hover{
     color: #93c9ff;
 }
 
 
-// Place all the styles related to the Humen controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-// .container{
-//     text-align:center;
-// }
 
 
 *{
@@ -68,23 +59,33 @@
 
 
 
-
-
-
-
 h2{
     font-weight:900px;
 }
 
-h3{
-    padding-top:30px;
+h1{
+    // padding-top:30px;
+    display:inline;
+    padding:0px;
+    // text-align:center;
     // padding-bottom: 20px;
+}
+
+.today{
+    border:solid 3px #6091d3;/*線*/
+    border-radius:10px;/*角の丸み*/
+    padding:10px;
+    margin-bottom:60px;
 }
 
 h5{
     text-align:center;
     padding-bottom:20px;
     font-weight:900;
+}
+
+label{
+    text-align:left;
 }
 
 
@@ -111,12 +112,15 @@ h5{
 
 .search-form{
     width:40%;
-    margin: 10px auto 10px auto;
+    margin: -35px auto 15px auto;
     padding: 20px 40px 20px 40px;
     line-height:10px;
     // text-align:center;
     background-color:#E0FFFF;
     border-radius:10px;
+    display:none;
+    padding-top:30px;
+    padding-bottom:30px;
 }
 
 .search-form hr{
@@ -150,4 +154,9 @@ h5{
     margin-bottom:30px;;
 }
 
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
 

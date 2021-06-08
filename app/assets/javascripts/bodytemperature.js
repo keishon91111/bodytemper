@@ -4,8 +4,10 @@
 // }
 
   function checkradio( disp ) {
-   document.getElementById('reason').style.display = disp;
+   document.querySelector('#reason').style.display = disp;
 }
+
+
 
 // function getToday() {
 // 	var now = new Date();
