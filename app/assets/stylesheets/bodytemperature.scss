@@ -1,3 +1,14 @@
+*{
+    font-weight:bold;
+    padding:0px;
+    margin:0px;
+    font-family:'sans-serif', sans-serif;
+    // background-color:blue;
+    text-align:center;
+
+}
+
+
 // Place all the styles related to the offices controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
@@ -28,15 +39,7 @@
 
 
 
-*{
-    font-weight:bold;
-    padding:0px;
-    margin:0px;
-    font-family:'sans-serif', sans-serif;
-    // background-color:blue;
-    text-align:center;
 
-}
 
 
 
@@ -83,10 +86,31 @@ h5{
     padding-bottom:20px;
     font-weight:900;
 }
-
-label{
-    text-align:left;
+.form-group .employee-label{
+    margin-bottom:5px;
 }
+
+
+.form-group .text-left{
+margin-right: auto;
+margin-bottom:3px;
+padding-top:3px;
+padding-bottom:3px;
+}
+
+// .form-group .radio-button{
+// margin-top:20px;
+// margin-bottom:2px;
+// }
+
+.form-group .reason-label{
+    padding-top:1px;
+    padding-bottom:3px;
+    margin-right: auto;
+    margin-bottom:3px;
+    margin-top:6px;
+}
+
 
 
 .form-group{
